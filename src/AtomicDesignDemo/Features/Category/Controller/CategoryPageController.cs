@@ -29,7 +29,7 @@ namespace AtomicDesignDemo.Features.Category.Controller
                     Url = x.ContentLink.ToFriendlyUrl(),
                     Excerpt = x.Excerpt,
                     Headline = x.Name,
-                    Label = x.Price,
+                    Label = $"${x.Price}",
                     StackedBlockMedia =
                         new ImageFileViewModel
                         {
@@ -37,7 +37,7 @@ namespace AtomicDesignDemo.Features.Category.Controller
                             Alt = x.FeaturedImageAlternativeText
                         },
                     StyleModifier = string.Empty,
-                    OnSale = x.IsOnSale ? new PriceSectionModel { Badge = "Sale", Price = x.RrpPrice } : null
+                    OnSale = x.IsOnSale ? new PriceSectionModel { Badge = "Sale", Price = $"${x.RrpPrice}" } : null
                 })
                 .ToList();
 

@@ -86,8 +86,10 @@ namespace AtomicDesignDemo.Features.Checkout.Controllers
             if (!ContentReference.IsNullOrEmpty(currentPage.CartPage))
             {
                 var cartPage = ContentLoader.Get<CartPage>(currentPage.CartPage);
-                var definitionGroups = cartPage.CartItems
+                var cartItems = cartPage.CartItems
                     .GetElementsOfType<ProductPage>()
+                    ?.ToList();
+                var definitionGroups = cartItems
                     ?.Select(x => new CheckoutDefinitionGroupModel
                     {
                         DefinitionList = new[]{
@@ -96,7 +98,7 @@ namespace AtomicDesignDemo.Features.Checkout.Controllers
                                 {
                                     new CheckoutDefinitionItemModel {Term = "Item", Description = x.Title},
                                     new CheckoutDefinitionItemModel {Term = "Quantity", Description = "1"},
-                                    new CheckoutDefinitionItemModel {Term = "Price", Description = x.Price}
+                                    new CheckoutDefinitionItemModel {Term = "Price", Description = $"${x.Price}"}
                                 }}}
                     });
 
@@ -106,7 +108,7 @@ namespace AtomicDesignDemo.Features.Checkout.Controllers
                     DefinitionItems = definitionGroups
                 };
 
-                Model.TotalPrice = new PriceSectionModel { Label = "Total", Number = "$240" };
+                Model.TotalPrice = new PriceSectionModel { Label = "Total", Number = $"${cartItems?.Sum(x => x.Price)}" };
             }
 
             if (!ContentReference.IsNullOrEmpty(currentPage.ReviewPage))

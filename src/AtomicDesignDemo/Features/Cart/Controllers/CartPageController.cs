@@ -32,9 +32,12 @@ namespace AtomicDesignDemo.Features.Cart.Controllers
                 }
             };
 
-            var lineItems = currentPage.CartItems
+            var cartItems = currentPage.CartItems
                 .GetElementsOfType<ProductPage>()
-                .Select(x => new CartLineItemModel
+                ?.ToList();
+
+            var lineItems = cartItems
+                ?.Select(x => new CartLineItemModel
                 {
                     Url = x.ContentLink.ToFriendlyUrl(),
                     Src = x.FeaturedImage.ToFriendlyUrl(),
@@ -47,12 +50,12 @@ namespace AtomicDesignDemo.Features.Cart.Controllers
                             Value = "1"
                         },
                     Headline = x.Title,
-                    CartPrice = new PriceSectionModel { Label = "Price", Meta = x.Price }
+                    CartPrice = new PriceSectionModel { Label = "Price", Meta = $"${x.Price}" }
                 });
 
             Model.StripeList = lineItems;
 
-            Model.TotalPrice = new PriceSectionModel { Label = "Total", Number = "$240", };
+            Model.TotalPrice = new PriceSectionModel { Label = "Total", Number = $"${cartItems?.Sum(x => x.Price)}", };
 
             Model.CheckOutButton = new ButtonBlockViewModel
             {

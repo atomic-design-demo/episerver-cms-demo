@@ -49,7 +49,7 @@ namespace AtomicDesignDemo.Features.Product.Models
             Name = "Price",
             Order = 30)]
         [CultureSpecific]
-        public virtual string Price { get; set; }
+        public virtual double Price { get; set; }
 
         [Display(
             Name = "One Sale",
@@ -61,7 +61,7 @@ namespace AtomicDesignDemo.Features.Product.Models
             Name = "Recommended retail price",
             Order = 50)]
         [CultureSpecific]
-        public virtual string RrpPrice { get; set; }
+        public virtual double RrpPrice { get; set; }
 
         [Display(
             Name = "Button",

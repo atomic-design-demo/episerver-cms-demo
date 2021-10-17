@@ -23,7 +23,7 @@ namespace AtomicDesignDemo.Features.Product.Controllers
         public override ActionResult Index(ProductPage currentPage)
         {
             Model.HtmlText = currentPage.ProductDescription?.ToHtmlString();
-            Model.PriceSection = new PriceSectionModel { Label = currentPage.Price };
+            Model.PriceSection = new PriceSectionModel { Label = $"${currentPage.Price}" };
             if (!ContentReference.IsNullOrEmpty(currentPage.FeaturedImage))
             {
                 Model.FeatureImage = new ImageFileViewModel
@@ -94,7 +94,7 @@ namespace AtomicDesignDemo.Features.Product.Controllers
                     Url = x.ContentLink.ToFriendlyUrl(),
                     Excerpt = x.Excerpt,
                     Headline = x.Name,
-                    Label = x.Price,
+                    Label = $"${x.Price}",
                     StackedBlockMedia = new ImageFileViewModel
                     {
                         Src = x.FeaturedImage.ToFriendlyUrl(),
@@ -104,7 +104,7 @@ namespace AtomicDesignDemo.Features.Product.Controllers
                     OnSale = x.IsOnSale ? new PriceSectionModel
                     {
                         Badge = "Sale",
-                        Price = x.RrpPrice
+                        Price = $"${x.RrpPrice}"
                     } : null
                 });
             if (relatedItems != null)
