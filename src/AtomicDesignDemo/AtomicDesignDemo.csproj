@@ -359,7 +359,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\HeaderBlock\Index.cshtml" />
     <Content Include="Views\HomePage\Index.cshtml" />
     <Content Include="Views\ProductPage\Index.cshtml" />
     <Content Include="Views\CategoryPage\Index.cshtml" />
