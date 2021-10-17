@@ -266,6 +266,7 @@
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Infrastructure\DependencyResolverInitialization.cs" />
+    <Compile Include="Infrastructure\ExtendedTinyMceInitialization.cs" />
     <Compile Include="Infrastructure\HandlebarsInitializationModule.cs" />
     <Compile Include="Infrastructure\RestrictRootPagesInitialization.cs" />
     <Compile Include="Infrastructure\ServiceLocatorDependencyResolver.cs" />
