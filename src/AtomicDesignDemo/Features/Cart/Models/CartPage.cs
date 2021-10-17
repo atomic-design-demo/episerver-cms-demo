@@ -25,5 +25,10 @@ namespace AtomicDesignDemo.Features.Cart.Models
         [CultureSpecific]
         [AllowedTypes(typeof(ProductPage))]
         public virtual ContentArea CartItems { get; set; }
+
+        [Display(
+            Name = "Checkout Page",
+            Order = 20)]
+        public virtual ContentReference CheckoutPage { get; set; }
     }
 }

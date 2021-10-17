@@ -26,8 +26,13 @@ namespace AtomicDesignDemo.Features.Checkout.Models
         public virtual ContentArea CheckoutForm { get; set; }
 
         [Display(
-            Name = "Review Page",
+            Name = "Cart Page",
             Order = 20)]
+        public virtual ContentReference CartPage { get; set; }
+
+        [Display(
+            Name = "Review Page",
+            Order = 30)]
         public virtual ContentReference ReviewPage { get; set; }
     }
 }

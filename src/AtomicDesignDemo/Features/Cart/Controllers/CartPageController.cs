@@ -47,7 +47,7 @@ namespace AtomicDesignDemo.Features.Cart.Controllers
             {
                 ButtonTag = false,
                 LinkTag = true,
-                Url = "#",
+                Url = currentPage.CheckoutPage.ToFriendlyUrl(),
                 ButtonText = "Checkout"
             };
 
