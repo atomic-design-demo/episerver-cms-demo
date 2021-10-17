@@ -374,6 +374,7 @@
     <Content Include="assets\patterns\templates-homepage.hbs" />
     <Content Include="assets\patterns\templates-page.hbs" />
     <Content Include="assets\patterns\templates-review.hbs" />
+    <Content Include="assets\css\style.css.map" />
     <None Include="EPiServerLog.config" />
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\web.config" />
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
