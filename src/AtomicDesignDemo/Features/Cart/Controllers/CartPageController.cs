@@ -21,6 +21,17 @@ namespace AtomicDesignDemo.Features.Cart.Controllers
 
         public override ActionResult Index(CartPage currentPage)
         {
+            Model.ProgressTracker = new ProgressTrackerModel
+            {
+                Items = new[]
+                {
+                    new ProgressTrackerItemModel {Number = "1", Label = "Shipping Information", StyleModifier = "is-current"},
+                    new ProgressTrackerItemModel {Number = "2", Label = "Billing Information"},
+                    new ProgressTrackerItemModel {Number = "3", Label = "Review Order"},
+                    new ProgressTrackerItemModel {Number = "4", Label = "Confirmation"}
+                }
+            };
+
             var lineItems = currentPage.CartItems
                 .GetElementsOfType<ProductPage>()
                 .Select(x => new CartLineItemModel

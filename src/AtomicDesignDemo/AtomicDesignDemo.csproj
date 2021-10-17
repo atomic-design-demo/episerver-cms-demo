@@ -261,6 +261,9 @@
     <Compile Include="Features\Checkout\Controllers\CheckoutPageController.cs" />
     <Compile Include="Features\Checkout\Models\CheckOutPage.cs" />
     <Compile Include="Features\Checkout\ViewModels\CheckoutPageViewModel.cs" />
+    <Compile Include="Features\Confirmation\Controllers\ConfirmationPageController.cs" />
+    <Compile Include="Features\Confirmation\Models\ConfirmationPage.cs" />
+    <Compile Include="Features\Confirmation\ViewModels\ConfirmationPageViewModel.cs" />
     <Compile Include="Features\Header\Controllers\HeaderBlockController.cs" />
     <Compile Include="Features\Header\Models\HeaderBlock.cs" />
     <Compile Include="Features\Header\ViewModels\HeaderBlockViewModel.cs" />
@@ -301,6 +304,7 @@
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Models\ViewModels\PaginationItemModel.cs" />
     <Compile Include="Models\ViewModels\PriceSectionModel.cs" />
+    <Compile Include="Models\ViewModels\ProgressTrackerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -391,6 +395,7 @@
     <Content Include="Views\CartPage\Index.cshtml" />
     <Content Include="Views\CheckoutPage\Index.cshtml" />
     <Content Include="Views\ReviewPage\Index.cshtml" />
+    <Content Include="Views\ConfirmationPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

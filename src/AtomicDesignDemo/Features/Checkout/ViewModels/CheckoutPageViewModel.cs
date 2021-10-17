@@ -7,6 +7,7 @@ namespace AtomicDesignDemo.Features.Checkout.ViewModels
 {
     public class CheckoutPageViewModel : PageViewModel<CheckOutPage>
     {
+        public ProgressTrackerModel ProgressTracker { get; set; }
         public CheckOutFormModel FormFields { get; set; }
         public IEnumerable<ButtonBlockViewModel> ButtonGroup { get; set; }
         public DefinitionListSectionModel DefinitionListSection { get; set; }

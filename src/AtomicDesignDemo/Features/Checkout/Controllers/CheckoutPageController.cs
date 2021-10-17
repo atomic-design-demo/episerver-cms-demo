@@ -26,6 +26,17 @@ namespace AtomicDesignDemo.Features.Checkout.Controllers
 
         public override ActionResult Index(CheckOutPage currentPage)
         {
+            Model.ProgressTracker = new ProgressTrackerModel
+            {
+                Items = new[]
+                {
+                    new ProgressTrackerItemModel {Number = "1", Label = "Shipping Information"},
+                    new ProgressTrackerItemModel {Number = "2", Label = "Billing Information", StyleModifier = "is-current"},
+                    new ProgressTrackerItemModel {Number = "3", Label = "Review Order"},
+                    new ProgressTrackerItemModel {Number = "4", Label = "Confirmation"}
+                }
+            };
+
             var form = currentPage.CheckoutForm
                 .GetElementsOfType<FormContainerBlock>()
                 ?.FirstOrDefault();
@@ -51,7 +62,8 @@ namespace AtomicDesignDemo.Features.Checkout.Controllers
                             TextField = new CheckOutFormFieldInnerModel
                             {
                                 Label = textBox.Label
-                            }
+                            },
+                            InlineCheckbox = null
                         });
                     }
                     if (formField is ChoiceElementBlock choice)
@@ -62,6 +74,7 @@ namespace AtomicDesignDemo.Features.Checkout.Controllers
                             {
                                 items.Add(new CheckOutFormFieldModel
                                 {
+                                    TextField = null,
                                     InlineCheckbox = new CheckOutFormFieldInnerModel { Label = choice.Label, StyleModifier = "u-margin-bottom-large" }
                                 });
                             }
@@ -93,7 +106,7 @@ namespace AtomicDesignDemo.Features.Checkout.Controllers
                     DefinitionItems = definitionGroups
                 };
 
-                Model.TotalPrice = new PriceSectionModel {Label = "Total", Number = "$240"};
+                Model.TotalPrice = new PriceSectionModel { Label = "Total", Number = "$240" };
             }
 
             if (!ContentReference.IsNullOrEmpty(currentPage.ReviewPage))

@@ -7,6 +7,7 @@ namespace AtomicDesignDemo.Features.Cart.ViewModels
 {
     public class CartPageViewModel : PageViewModel<CartPage>
     {
+        public ProgressTrackerModel ProgressTracker { get; set; }
         public IEnumerable<CartLineItemModel> StripeList { get; set; }
         public PriceSectionModel TotalPrice { get; set; }
         public ButtonBlockViewModel CheckOutButton { get; set; }
