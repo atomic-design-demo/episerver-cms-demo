@@ -16,6 +16,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>true</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
+    <LangVersion>8.0</LangVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -225,18 +226,30 @@
     <Compile Include="Backdoor.aspx.designer.cs">
       <DependentUpon>Backdoor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BasePageController.cs" />
+    <Compile Include="Features\Header\Controllers\HeaderBlockController.cs" />
+    <Compile Include="Features\Header\Models\HeaderBlock.cs" />
+    <Compile Include="Features\Header\ViewModels\HeaderBlockViewModel.cs" />
+    <Compile Include="Features\Home\Controllers\HomePageController.cs" />
+    <Compile Include="Features\Home\Models\HomePage.cs" />
+    <Compile Include="Features\Home\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Models\BaseBlockData.cs" />
+    <Compile Include="Models\BasePageData.cs" />
+    <Compile Include="Models\Interfaces\IPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\LayoutModel.cs" />
+    <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Static\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\style.css" />
     <Content Include="Backdoor.aspx" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
@@ -249,6 +262,10 @@
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\web.config" />
     <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\HeaderBlock\Index.cshtml" />
+    <Content Include="Views\HomePage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
