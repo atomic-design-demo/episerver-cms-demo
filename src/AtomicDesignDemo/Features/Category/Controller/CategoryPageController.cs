@@ -38,7 +38,8 @@ namespace AtomicDesignDemo.Features.Category.Controller
                         },
                     StyleModifier = string.Empty,
                     OnSale = x.IsOnSale ? new PriceSectionModel { Badge = "Sale", Price = x.RrpPrice } : null
-                });
+                })
+                .ToList();
 
             Model.StackedBlockSection = new ProductListViewModel
             {
@@ -46,13 +47,16 @@ namespace AtomicDesignDemo.Features.Category.Controller
                 StackedBlockList = products
             };
 
-            Model.PaginationList = new[]
+            if (products.Count >= 6)
             {
-                new PaginationItemModel {ItemModifier = "is-disabled", Number = "Prev"},
-                new PaginationItemModel {ItemModifier = "is-active", Number = "1"},
-                new PaginationItemModel {Url = "#", Number = "2"},
-                new PaginationItemModel {Url = "#", Number = "Next"}
-            };
+                Model.PaginationList = new[]
+                {
+                    new PaginationItemModel {ItemModifier = "is-disabled", Number = "Prev"},
+                    new PaginationItemModel {ItemModifier = "is-active", Number = "1"},
+                    new PaginationItemModel {Url = "#", Number = "2"},
+                    new PaginationItemModel {Url = "#", Number = "Next"}
+                };
+            }
 
             return View(Model);
         }

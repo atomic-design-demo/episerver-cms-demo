@@ -88,8 +88,8 @@ namespace AtomicDesignDemo.Features.Product.Controllers
 
             var relatedItems = currentPage.RelatedItems
                 .GetElementsOfType<ProductPage>()
-                .OrderBy(x => x.IsOnSale ? 0 : 1)
-                ?.Select(x => new ProductListItemViewModel
+                ?.OrderBy(x => x.IsOnSale ? 0 : 1)
+                .Select(x => new ProductListItemViewModel
                 {
                     Url = x.ContentLink.ToFriendlyUrl(),
                     Excerpt = x.Excerpt,
