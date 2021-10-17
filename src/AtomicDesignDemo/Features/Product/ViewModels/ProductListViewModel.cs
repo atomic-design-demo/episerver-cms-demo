@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AtomicDesignDemo.Features.Image.ViewModels;
+using AtomicDesignDemo.Models.ViewModels;
 
 namespace AtomicDesignDemo.Features.Product.ViewModels
 {
@@ -17,5 +18,6 @@ namespace AtomicDesignDemo.Features.Product.ViewModels
         public string Headline { get; set; }
         public string Excerpt { get; set; }
         public string Label { get; set; }
+        public PriceSectionModel OnSale { get; set; }
     }
 }

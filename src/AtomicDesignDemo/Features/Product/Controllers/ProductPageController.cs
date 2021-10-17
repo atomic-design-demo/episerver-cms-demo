@@ -22,7 +22,7 @@ namespace AtomicDesignDemo.Features.Product.Controllers
 
         public override ActionResult Index(ProductPage currentPage)
         {
-            Model.HtmlText = currentPage.Description?.ToHtmlString();
+            Model.HtmlText = currentPage.ProductDescription?.ToHtmlString();
             Model.PriceSection = new PriceSectionModel { Label = currentPage.Price };
             if (!ContentReference.IsNullOrEmpty(currentPage.FeaturedImage))
             {
@@ -37,7 +37,53 @@ namespace AtomicDesignDemo.Features.Product.Controllers
             {
                 ButtonGroup = currentPage.Buttons
                     .GetElementsOfType<ButtonBlock>()
-                    ?.Select(x => new ButtonBlockViewModel { Url = x.Url.ToFriendlyUrl(), ButtonText = x.Text, ButtonTag = false, LinkTag = true })
+                    ?.Select(x => new ButtonBlockViewModel { Url = x.Url.ToFriendlyUrl(), ButtonText = x.Text, ButtonTag = false, LinkTag = true }),
+                FormFields = new FormFieldsModel
+                {
+                    Items = new []
+                    {
+                        new FormFieldItemModel
+                        {
+                            SelectField = new SelectFieldItemModel
+                            {
+                                Label = "Pick a Size",
+                                SelectOptions = new []
+                                {
+                                    new SelectOptionModel
+                                    {
+                                        Value = "xs",
+                                        Option = "Extra Small"
+                                    },
+                                    new SelectOptionModel
+                                    {
+                                        Value = "s",
+                                        Option = "Small"
+                                    },
+                                    new SelectOptionModel
+                                    {
+                                        Value = "m",
+                                        Option = "Medium"
+                                    },
+                                    new SelectOptionModel
+                                    {
+                                        Value = "l",
+                                        Option = "Large"
+                                    },
+                                    new SelectOptionModel
+                                    {
+                                        Value = "xl",
+                                        Option = "Extra Large"
+                                    },
+                                    new SelectOptionModel
+                                    {
+                                        Value = "xxl",
+                                        Option = "Extra Large Max"
+                                    },
+                                }
+                            }
+                        }
+                    }
+                }
             };
 
             var relatedItems = currentPage.RelatedItems
@@ -53,7 +99,12 @@ namespace AtomicDesignDemo.Features.Product.Controllers
                         Src = x.FeaturedImage.ToFriendlyUrl(),
                         Alt = x.FeaturedImageAlternativeText
                     },
-                    StyleModifier = string.Empty
+                    StyleModifier = string.Empty,
+                    OnSale = x.IsOnSale ? new PriceSectionModel
+                    {
+                        Badge = "Sale",
+                        Price = x.RrpPrice
+                    } : null
                 });
             if (relatedItems != null)
             {

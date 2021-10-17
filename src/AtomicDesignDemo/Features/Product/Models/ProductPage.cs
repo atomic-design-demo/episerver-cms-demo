@@ -40,6 +40,12 @@ namespace AtomicDesignDemo.Features.Product.Models
         public virtual string Excerpt { get; set; }
 
         [Display(
+            Name = "Product Description",
+            Order = 27)]
+        [CultureSpecific]
+        public virtual XhtmlString ProductDescription { get; set; }
+
+        [Display(
             Name = "Price",
             Order = 30)]
         [CultureSpecific]

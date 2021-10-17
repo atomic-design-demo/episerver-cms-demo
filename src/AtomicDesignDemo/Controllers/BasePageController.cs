@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using AtomicDesignDemo.Features.Home.Models;
+using AtomicDesignDemo.Extensions;
+using AtomicDesignDemo.Features.Category.Models;
 using AtomicDesignDemo.Models;
 using AtomicDesignDemo.Models.ViewModels;
 using EPiServer;
@@ -52,18 +53,14 @@ namespace AtomicDesignDemo.Controllers
             {
             };
             model.Company = new CompanyInfo { Name = "Soul Soles" };
-            model.FooterLogo = new Logo {StyleModifier = "c-logo--light" };
+            model.FooterLogo = new Logo { StyleModifier = "c-logo--light" };
 
-            var homePage = currentPage is HomePage hp ? hp : ContentLoader.Get<HomePage>(ContentReference.StartPage);
-            if (homePage.NavItems != null)
-            {
-                model.NavItems = homePage.NavItems.Select(x => new NavItem { Label = x.Text, Url = x.Href });
-            }
-
-            if (homePage.FooterNavItems != null)
-            {
-                model.FooterNav = homePage.FooterNavItems.Select(x => new NavItem {Label = x.Text, Url = x.Href});
-            }
+            var categories = ContentLoader
+                .GetChildren<CategoryPage>(ContentReference.StartPage)
+                .Select(x => new NavItem { Label = x.Name, Url = x.ContentLink.ToFriendlyUrl() })
+                .ToList();
+            model.NavItems = categories;
+            model.FooterNav = categories;
 
             return model;
         }
