@@ -65,6 +65,7 @@ namespace AtomicDesignDemo.Controllers
             var navItems = ContentLoader
                 .GetChildren<BasePageData>(ContentReference.StartPage)
                 .OrderBy(x => x.SortIndex)
+                .Where(x => !x.HideNavigation)
                 .Select(x => new NavItem { Label = x.Name, Url = x.ContentLink.ToFriendlyUrl() })
                 .ToList();
             model.NavItems = navItems;

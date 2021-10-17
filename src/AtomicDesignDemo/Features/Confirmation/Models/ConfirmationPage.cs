@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using AtomicDesignDemo.Features.Home.Models;
 using AtomicDesignDemo.Models;
+using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 
@@ -16,5 +18,10 @@ namespace AtomicDesignDemo.Features.Confirmation.Models
         IncludeOn = new[] { typeof(HomePage) })]
     public class ConfirmationPage : BasePageData
     {
+        [Display(
+            Name = "HTML Text",
+            Order = 40)]
+        [CultureSpecific]
+        public virtual XhtmlString HtmlText { get; set; }
     }
 }

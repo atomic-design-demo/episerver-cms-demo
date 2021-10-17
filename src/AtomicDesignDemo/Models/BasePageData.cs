@@ -24,5 +24,11 @@ namespace AtomicDesignDemo.Models
             Order = 100)]
         [CultureSpecific]
         public virtual XhtmlString Description { get; set; }
+
+        [Display(
+            GroupName = SystemTabNames.Settings,
+            Order = 100)]
+        [CultureSpecific]
+        public virtual bool HideNavigation { get; set; }
     }
 }

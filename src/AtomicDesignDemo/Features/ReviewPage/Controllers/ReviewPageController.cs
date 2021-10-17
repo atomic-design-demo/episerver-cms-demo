@@ -72,10 +72,12 @@ namespace AtomicDesignDemo.Features.ReviewPage.Controllers
                         ButtonTag = false,
                         LinkTag = true,
                         Url = currentPage.ConfirmationPage.ToFriendlyUrl(),
-                        ButtonText = "Continue to Billing"
+                        ButtonText = "Submit Order"
                     }
                 };
             }
+
+            Model.HtmlText = currentPage.HtmlText?.ToHtmlString();
 
             return View(Model);
         }

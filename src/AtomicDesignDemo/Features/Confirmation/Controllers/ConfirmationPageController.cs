@@ -25,6 +25,9 @@ namespace AtomicDesignDemo.Features.Confirmation.Controllers
                     new ProgressTrackerItemModel {Number = "4", Label = "Confirmation", StyleModifier = "is-current"}
                 }
             };
+
+            Model.HtmlText = currentPage.HtmlText?.ToHtmlString();
+
             return View(Model);
         }
     }

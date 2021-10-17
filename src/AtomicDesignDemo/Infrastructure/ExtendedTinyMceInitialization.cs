@@ -1,7 +1,4 @@
-﻿using AtomicDesignDemo.Features.Product.Models;
-using AtomicDesignDemo.Features.Promotion.Models;
-using AtomicDesignDemo.Models;
-using EPiServer.Cms.TinyMce.Core;
+﻿using EPiServer.Cms.TinyMce.Core;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
@@ -16,15 +13,7 @@ namespace AtomicDesignDemo.Infrastructure
         {
             context.Services.Configure<TinyMceConfiguration>(config =>
             {
-                config.For<BasePageData>(t => t.Description)
-                    .AddPlugin("code")
-                    .Toolbar("formatselect styleselect | bold italic | epi-link image epi-image-editor epi-personalized-content | bullist numlist outdent indent | code");
-
-                config.For<ProductPage>(t => t.ProductDescription)
-                    .AddPlugin("code")
-                    .Toolbar("formatselect styleselect | bold italic | epi-link image epi-image-editor epi-personalized-content | bullist numlist outdent indent | code");
-
-                config.For<PromotionBlock>(t => t.Description)
+                config.Default()
                     .AddPlugin("code")
                     .Toolbar("formatselect styleselect | bold italic | epi-link image epi-image-editor epi-personalized-content | bullist numlist outdent indent | code");
             });

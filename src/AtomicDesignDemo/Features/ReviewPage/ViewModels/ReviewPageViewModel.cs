@@ -11,5 +11,6 @@ namespace AtomicDesignDemo.Features.ReviewPage.ViewModels
         public IEnumerable<ButtonBlockViewModel> ButtonGroup { get; set; }
         public DefinitionListSectionModel DefinitionListSection { get; set; }
         public PriceSectionModel TotalPrice { get; set; }
+        public string HtmlText { get; set; }
     }
 }

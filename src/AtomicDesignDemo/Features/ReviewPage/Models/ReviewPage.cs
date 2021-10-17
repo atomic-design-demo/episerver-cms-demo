@@ -22,9 +22,16 @@ namespace AtomicDesignDemo.Features.ReviewPage.Models
             Name = "Cart Page",
             Order = 20)]
         public virtual ContentReference CartPage { get; set; }
+
         [Display(
             Name = "Confirmation Page",
             Order = 30)]
         public virtual ContentReference ConfirmationPage { get; set; }
+
+        [Display(
+            Name = "HTML Text",
+            Order = 40)]
+        [CultureSpecific]
+        public virtual XhtmlString HtmlText { get; set; }
     }
 }
