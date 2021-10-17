@@ -7,7 +7,7 @@
         public string Src { get; set; }
         public string Alt { get; set; }
         public string StyleModifier { get; set; }
-        private PromotionBlockLink PromoBlockLink { get; set; }
+        public PromotionBlockLink PromoBlockLink { get; set; }
     }
 
     public class PromotionBlockLink

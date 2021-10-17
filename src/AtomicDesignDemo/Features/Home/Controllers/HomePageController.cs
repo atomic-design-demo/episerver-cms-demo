@@ -30,16 +30,20 @@ namespace AtomicDesignDemo.Features.Home.Controllers
                 };
             }
 
-            Model.PromoBlock = currentPage.Promotions
+            var promotionBlocks = currentPage.Promotions
                 .GetElementsOfType<PromotionBlock>()
                 ?.Select(x => new PromotionBlockViewModel
                 {
                     Heading = x.Heading,
                     Description = x.Description?.ToHtmlString(),
-                    Src = x.Url.ToFriendlyUrl(),
+                    Src = x.Image.ToFriendlyUrl(),
                     Alt = x.AlternativeText,
-                    StyleModifier = GetPromotionModifier(x)
-                });
+                    StyleModifier = GetPromotionModifier(x),
+                    PromoBlockLink = new PromotionBlockLink { Url = x.Url.ToFriendlyUrl() }
+                })
+                .ToList();
+
+            Model.PromoBlock = promotionBlocks;
 
             return View(Model);
         }
