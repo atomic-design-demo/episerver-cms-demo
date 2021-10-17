@@ -246,6 +246,9 @@
     <Compile Include="Features\Category\Controller\CategoryPageController.cs" />
     <Compile Include="Features\Category\Models\CategoryPage.cs" />
     <Compile Include="Features\Category\ViewModels\CategoryPageViewModel.cs" />
+    <Compile Include="Features\Checkout\Controllers\CheckoutPageController.cs" />
+    <Compile Include="Features\Checkout\Models\CheckOutPage.cs" />
+    <Compile Include="Features\Checkout\ViewModels\CheckoutPageViewModel.cs" />
     <Compile Include="Features\Header\Controllers\HeaderBlockController.cs" />
     <Compile Include="Features\Header\Models\HeaderBlock.cs" />
     <Compile Include="Features\Header\ViewModels\HeaderBlockViewModel.cs" />
@@ -366,6 +369,7 @@
     <Content Include="Views\ProductPage\Index.cshtml" />
     <Content Include="Views\CategoryPage\Index.cshtml" />
     <Content Include="Views\CartPage\Index.cshtml" />
+    <Content Include="Views\CheckoutPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
