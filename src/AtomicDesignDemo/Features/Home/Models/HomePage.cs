@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AtomicDesignDemo.Features.Cart.Models;
 using AtomicDesignDemo.Features.Category.Models;
 using AtomicDesignDemo.Features.Promotion.Models;
 using AtomicDesignDemo.Models;
@@ -16,7 +17,7 @@ namespace AtomicDesignDemo.Features.Home.Models
         GroupName = Global.GroupNames.Specialized)]
     [AvailableContentTypes(
         Availability.Specific,
-        Include = new[] { typeof(CategoryPage) })]
+        Include = new[] { typeof(CategoryPage), typeof(CartPage) })]
     public class HomePage : BasePageData
     {
         [Display(

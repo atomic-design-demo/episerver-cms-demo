@@ -240,6 +240,9 @@
     <Compile Include="Extensions\UrlExtensions.cs" />
     <Compile Include="Features\Button\Models\ButtonBlock.cs" />
     <Compile Include="Features\Button\ViewModels\ButtonBlockViewModel.cs" />
+    <Compile Include="Features\Cart\Controllers\CartPageController.cs" />
+    <Compile Include="Features\Cart\Models\CartPage.cs" />
+    <Compile Include="Features\Cart\ViewModels\CartPageViewModel.cs" />
     <Compile Include="Features\Category\Controller\CategoryPageController.cs" />
     <Compile Include="Features\Category\Models\CategoryPage.cs" />
     <Compile Include="Features\Category\ViewModels\CategoryPageViewModel.cs" />
@@ -362,6 +365,7 @@
     <Content Include="Views\HomePage\Index.cshtml" />
     <Content Include="Views\ProductPage\Index.cshtml" />
     <Content Include="Views\CategoryPage\Index.cshtml" />
+    <Content Include="Views\CartPage\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

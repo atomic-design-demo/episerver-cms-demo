@@ -61,13 +61,13 @@ namespace AtomicDesignDemo.Controllers
             model.Company = new CompanyInfo { Name = "Soul Soles" };
             model.FooterLogo = new Logo { StyleModifier = "c-logo--light" };
 
-            var categories = ContentLoader
-                .GetChildren<CategoryPage>(ContentReference.StartPage)
+            var navItems = ContentLoader
+                .GetChildren<BasePageData>(ContentReference.StartPage)
                 .OrderBy(x => x.SortIndex)
                 .Select(x => new NavItem { Label = x.Name, Url = x.ContentLink.ToFriendlyUrl() })
                 .ToList();
-            model.NavItems = categories;
-            model.FooterNav = categories;
+            model.NavItems = navItems;
+            model.FooterNav = navItems;
 
             if (!ContentReference.IsNullOrEmpty(currentPage.Hero))
             {
