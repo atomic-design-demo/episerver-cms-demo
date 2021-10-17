@@ -29,6 +29,7 @@ namespace AtomicDesignDemo.Features.Checkout.ViewModels
     {
         public string StyleModifier { get; set; }
         public string Label { get; set; }
+        public string Value { get; set; }
     }
 
     public class DefinitionListSectionModel
