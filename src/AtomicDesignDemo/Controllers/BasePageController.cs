@@ -49,6 +49,7 @@ namespace AtomicDesignDemo.Controllers
         private TViewModel PopulateViewModel(TPage currentPage, TViewModel model)
         {
             model ??= new TViewModel();
+            model.HomePageUrl = ContentReference.StartPage.ToFriendlyUrl();
             model.CurrentPage = currentPage;
             model.Page = new PageModel
             {

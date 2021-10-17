@@ -7,6 +7,7 @@ namespace AtomicDesignDemo.Models.ViewModels
     public class PageViewModel<TPage>
         : IPageViewModel<TPage> where TPage : BasePageData
     {
+        public string HomePageUrl { get; set; }
         public HeroBlockViewModel Hero { get; set; }
         public TPage CurrentPage { get; set; }
         public PageModel Page { get; set; }
