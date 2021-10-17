@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using AtomicDesignDemo.Extensions;
 using AtomicDesignDemo.Features.Category.Models;
+using AtomicDesignDemo.Features.Hero.Models;
+using AtomicDesignDemo.Features.Hero.ViewModels;
 using AtomicDesignDemo.Models;
 using AtomicDesignDemo.Models.ViewModels;
 using EPiServer;
@@ -48,7 +50,11 @@ namespace AtomicDesignDemo.Controllers
         {
             model ??= new TViewModel();
             model.CurrentPage = currentPage;
-            model.Page = currentPage;
+            model.Page = new PageModel
+            {
+                Title = currentPage.Title,
+                Description = currentPage.Description?.ToHtmlString()
+            };
             model.Layout = new LayoutModel
             {
             };
@@ -57,10 +63,27 @@ namespace AtomicDesignDemo.Controllers
 
             var categories = ContentLoader
                 .GetChildren<CategoryPage>(ContentReference.StartPage)
+                .OrderBy(x => x.SortIndex)
                 .Select(x => new NavItem { Label = x.Name, Url = x.ContentLink.ToFriendlyUrl() })
                 .ToList();
             model.NavItems = categories;
             model.FooterNav = categories;
+
+            if (!ContentReference.IsNullOrEmpty(currentPage.Hero))
+            {
+                var heroBlock = ContentLoader.Get<HeroBlock>(currentPage.Hero);
+
+                if (heroBlock != null)
+                {
+                    model.Hero = new HeroBlockViewModel
+                    {
+                        Src = heroBlock.Image.ToFriendlyUrl(),
+                        Alt = heroBlock.AlternativeText,
+                        Heading = heroBlock.Heading,
+                        Url = heroBlock.Url.ToFriendlyUrl()
+                    };
+                }
+            }
 
             return model;
         }

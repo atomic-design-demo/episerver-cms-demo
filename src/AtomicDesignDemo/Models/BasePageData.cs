@@ -2,13 +2,22 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using EPiServer.SpecializedProperties;
 
 namespace AtomicDesignDemo.Models
 {
     public class BasePageData : PageData
     {
-        public string Title => Name;
+        [Display(
+            Name = "Title",
+            Order = 1)]
+        [CultureSpecific]
+        public virtual string Title { get; set; }
+
+        [Display(
+            Name = "Hero",
+            Order = 10)]
+        [CultureSpecific]
+        public virtual ContentReference Hero { get; set; }
 
         [Display(
             GroupName = SystemTabNames.Content,

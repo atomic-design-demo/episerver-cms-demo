@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AtomicDesignDemo.Models;
 using EPiServer;
+using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using EPiServer.Web;
 
@@ -22,12 +23,18 @@ namespace AtomicDesignDemo.Features.Hero.Models
             Name = "URL",
             Order = 20)]
         [CultureSpecific]
-        [UIHint(UIHint.Image)]
         public virtual Url Url { get; set; }
 
         [Display(
-            Name = "Alternative text",
+            Name = "URL",
             Order = 30)]
+        [CultureSpecific]
+        [UIHint(UIHint.Image)]
+        public virtual ContentReference Image { get; set; }
+
+        [Display(
+            Name = "Alternative text",
+            Order = 40)]
         public virtual string AlternativeText { get; set; }
     }
 }

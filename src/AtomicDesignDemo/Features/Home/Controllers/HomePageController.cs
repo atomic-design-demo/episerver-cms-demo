@@ -3,14 +3,11 @@ using System.Linq;
 using System.Web.Mvc;
 using AtomicDesignDemo.Controllers;
 using AtomicDesignDemo.Extensions;
-using AtomicDesignDemo.Features.Hero.Models;
-using AtomicDesignDemo.Features.Hero.ViewModels;
 using AtomicDesignDemo.Features.Home.Models;
 using AtomicDesignDemo.Features.Home.ViewModels;
 using AtomicDesignDemo.Features.Promotion.Models;
 using AtomicDesignDemo.Features.Promotion.ViewModels;
 using EPiServer;
-using EPiServer.Core;
 
 namespace AtomicDesignDemo.Features.Home.Controllers
 {
@@ -23,17 +20,6 @@ namespace AtomicDesignDemo.Features.Home.Controllers
 
         public override ActionResult Index(HomePage currentPage)
         {
-            if (!ContentReference.IsNullOrEmpty(currentPage.Hero))
-            {
-                var heroBlock = ContentLoader.Get<HeroBlock>(currentPage.Hero);
-                Model.Hero = new HeroBlockViewModel
-                {
-                    Src = heroBlock.Url.ToFriendlyUrl(),
-                    Alt = heroBlock.AlternativeText,
-                    Heading = heroBlock.Heading
-                };
-            }
-
             var promotionBlocks = currentPage.Promotions
                 .GetElementsOfType<PromotionBlock>()
                 ?.Select(x => new PromotionBlockViewModel

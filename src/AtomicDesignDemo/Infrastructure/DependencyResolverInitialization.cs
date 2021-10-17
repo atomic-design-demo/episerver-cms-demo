@@ -2,8 +2,6 @@
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using EPiServer.Web.Mvc;
-using EPiServer.Web.Mvc.Html;
 
 namespace AtomicDesignDemo.Infrastructure
 {

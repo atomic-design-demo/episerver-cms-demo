@@ -7,7 +7,7 @@ namespace AtomicDesignDemo.Models.Interfaces
         where TPage : BasePageData
     {
         TPage CurrentPage { get; }
-        TPage Page { get; }
+        PageModel Page { get; }
         LayoutModel Layout { get; }
         string HeaderStyleModifier { get; }
         IEnumerable<NavItem> NavItems { get; }

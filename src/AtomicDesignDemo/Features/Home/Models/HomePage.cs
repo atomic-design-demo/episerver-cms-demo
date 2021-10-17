@@ -34,12 +34,6 @@ namespace AtomicDesignDemo.Features.Home.Models
         public virtual LinkItemCollection FooterNavItems { get; set; }
 
         [Display(
-            Name = "Hero",
-            Order = 10)]
-        [CultureSpecific]
-        public virtual ContentReference Hero { get; set; }
-
-        [Display(
             Name = "Promotions",
             Order = 20)]
         [CultureSpecific]
