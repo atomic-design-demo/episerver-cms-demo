@@ -6,6 +6,7 @@ namespace AtomicDesignDemo.Features.Product.ViewModels
 {
     public class ProductListViewModel
     {
+        public string StyleModifier { get; set; }
         public string SectionTitle { get; set; }
         public IEnumerable<ProductListItemViewModel> StackedBlockList { get; set; }
     }
