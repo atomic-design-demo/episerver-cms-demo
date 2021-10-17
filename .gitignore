@@ -245,3 +245,4 @@ _Pvt_Extensions
 !**/locals/.keep
 
 License.config
+!backups/
