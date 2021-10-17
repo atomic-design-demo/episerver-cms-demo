@@ -29,5 +29,15 @@ namespace AtomicDesignDemo
             [Display(Name = "Specialized", Order = 7)]
             public const string Specialized = "Specialized";
         }
+
+        [GroupDefinitions]
+        public static class TabNames
+        {
+            [Display(Name = "Header", Order = 10)]
+            public const string Header = "Header";
+
+            [Display(Name = "Footer", Order = 10)]
+            public const string Footer = "Footer";
+        }
     }
 }

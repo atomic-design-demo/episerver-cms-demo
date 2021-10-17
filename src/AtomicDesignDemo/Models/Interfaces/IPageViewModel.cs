@@ -1,4 +1,5 @@
-﻿using AtomicDesignDemo.Models.ViewModels;
+﻿using System.Collections.Generic;
+using AtomicDesignDemo.Models.ViewModels;
 
 namespace AtomicDesignDemo.Models.Interfaces
 {
@@ -6,6 +7,9 @@ namespace AtomicDesignDemo.Models.Interfaces
         where TPage : BasePageData
     {
         TPage CurrentPage { get; }
+        TPage Page { get; }
         LayoutModel Layout { get; }
+        string HeaderStyleModifier { get; }
+        IEnumerable<NavItem> NavItems { get; }
     }
 }

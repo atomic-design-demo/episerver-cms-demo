@@ -2,21 +2,18 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer.SpecializedProperties;
 
 namespace AtomicDesignDemo.Models
 {
     public class BasePageData : PageData
     {
-        [Display(
-            GroupName = SystemTabNames.Settings,
-            Order = 200)]
-        [CultureSpecific]
-        public virtual bool HideSiteHeader { get; set; }
+        public string Title => Name;
 
         [Display(
-            GroupName = SystemTabNames.Settings,
-            Order = 300)]
+            GroupName = SystemTabNames.Content,
+            Order = 100)]
         [CultureSpecific]
-        public virtual bool HideSiteFooter { get; set; }
+        public virtual XhtmlString Description { get; set; }
     }
 }

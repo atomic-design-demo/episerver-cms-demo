@@ -1,7 +1,10 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using AtomicDesignDemo.Features.Home.Models;
 using AtomicDesignDemo.Models;
 using AtomicDesignDemo.Models.ViewModels;
+using EPiServer;
+using EPiServer.Core;
 using EPiServer.Web.Mvc;
 
 namespace AtomicDesignDemo.Controllers
@@ -11,8 +14,14 @@ namespace AtomicDesignDemo.Controllers
         where TPage : BasePageData
         where TViewModel : PageViewModel<TPage>, new()
     {
+        protected readonly IContentLoader ContentLoader;
         protected TViewModel Model;
-        
+
+        protected BasePageController(IContentLoader contentLoader)
+        {
+            ContentLoader = contentLoader;
+        }
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
@@ -36,9 +45,23 @@ namespace AtomicDesignDemo.Controllers
         {
             model ??= new TViewModel();
             model.CurrentPage = currentPage;
+            model.Page = currentPage;
             model.Layout = new LayoutModel
             {
             };
+            model.Company = new CompanyInfo { Name = "Soul Soles" };
+            model.FooterLogo = new Logo {StyleModifier = "c-logo--light" };
+
+            var homePage = currentPage is HomePage hp ? hp : ContentLoader.Get<HomePage>(ContentReference.StartPage);
+            if (homePage.NavItems != null)
+            {
+                model.NavItems = homePage.NavItems.Select(x => new NavItem { Label = x.Text, Url = x.Href });
+            }
+
+            if (homePage.FooterNavItems != null)
+            {
+                model.FooterNav = homePage.FooterNavItems.Select(x => new NavItem {Label = x.Text, Url = x.Href});
+            }
 
             return model;
         }
