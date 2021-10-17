@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using AtomicDesignDemo.Features.Category.Models;
 using AtomicDesignDemo.Features.Promotion.Models;
 using AtomicDesignDemo.Models;
 using EPiServer.Core;
+using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using static AtomicDesignDemo.Global;
@@ -12,6 +14,9 @@ namespace AtomicDesignDemo.Features.Home.Models
         GUID = "9e643bbc-e24e-40fe-bad9-d36181686ac0",
         DisplayName = "Home Page",
         GroupName = Global.GroupNames.Specialized)]
+    [AvailableContentTypes(
+        Availability.Specific,
+        Include = new[] { typeof(CategoryPage) })]
     public class HomePage : BasePageData
     {
         [Display(

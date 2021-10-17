@@ -17,7 +17,11 @@ namespace AtomicDesignDemo.Features.Home.Controllers
     public class HomePageController
         : BasePageController<HomePage, HomePageViewModel>
     {
-        public ActionResult Index(HomePage currentPage)
+        public HomePageController(IContentLoader contentLoader) : base(contentLoader)
+        {
+        }
+
+        public override ActionResult Index(HomePage currentPage)
         {
             if (!ContentReference.IsNullOrEmpty(currentPage.Hero))
             {
@@ -62,10 +66,6 @@ namespace AtomicDesignDemo.Features.Home.Controllers
             }
 
             return string.Join(" ", modifiers);
-        }
-
-        public HomePageController(IContentLoader contentLoader) : base(contentLoader)
-        {
         }
     }
 }

@@ -22,6 +22,8 @@ namespace AtomicDesignDemo.Controllers
             ContentLoader = contentLoader;
         }
 
+        public abstract ActionResult Index(TPage currentPage);
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
