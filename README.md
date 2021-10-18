@@ -3,10 +3,10 @@
 ## Installation
 
 1. Clone this repo.
-1. Restore the latest database in the **backups** folder.
-1. In the **src/locals** add following files:
+1. Restore the latest database in **backups** folder.
+1. In **src/locals** folder, add following files:
 
-   connectionStrings.config:
+   **connectionStrings.config**:
 
    ```xml
    <connectionStrings>
@@ -17,7 +17,7 @@
    </connectionStrings>
    ```
 
-   episerverfind.config:
+   **episerverfind.config**:
 
    ```xml
    <episerver.find
@@ -25,6 +25,6 @@
      defaultIndex="*****"/>
    ```
 
-   Change your database/search index info to your own instances.
+   Change your database/Find index info to your own instances.
 
 1. Build and run the project
