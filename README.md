@@ -28,3 +28,10 @@
    Change your database/Find index info to your own instances.
 
 1. Build and run the project
+
+1. Go to CMS Editor and login with below account:
+
+   - URL: <http://localhost:80/util/login.aspx?ReturnUrl=%2fEpiserver%2fCMS>  
+     (Change `localhost:80` to your own domain).
+   - Username: **demo**
+   - Password: **Pass@word123!**
