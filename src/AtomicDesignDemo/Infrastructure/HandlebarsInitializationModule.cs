@@ -13,13 +13,19 @@ namespace AtomicDesignDemo.Infrastructure
     {
         public void Initialize(InitializationEngine context)
         {
-            var hostingEnvironment = ServiceLocator.Current.GetInstance<IHostingEnvironment>();
+            var hostingEnvironment = ServiceLocator.Current
+                .GetInstance<IHostingEnvironment>();
             var patternsDirectory = hostingEnvironment.MapPath("~/assets/patterns");
-            var patternFiles = Directory.EnumerateFiles(patternsDirectory, "*.hbs", SearchOption.TopDirectoryOnly);
+            var patternFiles = Directory.EnumerateFiles(
+                patternsDirectory,
+                "*.hbs",
+                SearchOption.TopDirectoryOnly);
+
             foreach (var patternFile in patternFiles)
             {
-                var pattern = File.ReadAllText(patternFile);
-                Handlebars.RegisterTemplate(Path.GetFileNameWithoutExtension(patternFile), pattern);
+                var patternPath = File.ReadAllText(patternFile);
+                var patternName = Path.GetFileNameWithoutExtension(patternFile);
+                Handlebars.RegisterTemplate(patternName, patternPath);
             }
         }
 
